@@ -1,6 +1,8 @@
 package com.solvedex.BlogSolvedex.services;
 
+import com.solvedex.BlogSolvedex.model.Comment;
 import com.solvedex.BlogSolvedex.model.Post;
+import com.solvedex.BlogSolvedex.repository.ICommentServiceRepository;
 import com.solvedex.BlogSolvedex.repository.IPostServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,28 +11,28 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PostServiceImpl implements IPostService{
+public class CommentServiceImpl implements ICommentService{
     @Autowired
-    IPostServiceRepository repository;
+    ICommentServiceRepository repository;
 
 
     @Override
-    public List<Post> findAll() {
+    public List<Comment> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<Post> save(Post p) {
+    public Optional<Comment> save(Comment p) {
         return Optional.of(repository.save(p));
     }
 
     @Override
-    public Optional<Post> findById(Long postId) {
-        return repository.findById(postId);
+    public Optional<Comment> findById(Long commentId) {
+        return repository.findById(commentId);
     }
 
     @Override
-    public void deleteById(Long postId) {
-         repository.deleteById(postId);
+    public void deleteById(Long commentId) {
+         repository.deleteById(commentId);
     }
 }
